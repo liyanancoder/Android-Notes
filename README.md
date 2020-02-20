@@ -38,7 +38,7 @@
 ***
 ### 操作系统
  - [操作系统知识总结]()
- - [操作系统note]()
+ - [操作系统note](https://github.com/liyanancoder/Android-Notes/tree/master/notes/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F)
 
 ***
 ### 数据库
