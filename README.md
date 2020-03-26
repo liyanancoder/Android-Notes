@@ -1,7 +1,7 @@
 
 
 ### Java基础
-
+- [java基础note](https://github.com/liyanancoder/Android-Notes/tree/master/notes/java基础)
 
 ***
 ### Java并发
