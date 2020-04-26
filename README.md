@@ -6,17 +6,17 @@
 
 ## Java并发
 
-* [java并发note](https://github.com/liyanancoder/Android-Notes/tree/master/notes/java并发)
+* [java并发note](notes/java并发)
 
-### Java虚拟机
-- [java虚拟机note](https://github.com/liyanancoder/Android-Notes/tree/master/notes/java虚拟机)
+## Java虚拟机
 
+* [java虚拟机note](/notes/java虚拟机)
 
-***
-### 网络
- - [计算机网络](https://github.com/liyanancoder/Android-Notes/blob/master/notes/网络/计算机网络.md)
- - [HTTP](https://github.com/liyanancoder/Android-Notes/blob/master/notes/网络/HTTP.md)
- - [Socket](https://github.com/liyanancoder/Android-Notes/blob/master/notes/网络/Socket.md)
+## 网络
+
+* [计算机网络](/notes/网络/计算机网络.md)
+* [HTTP](/notes/网络/HTTP.md)
+* [Socket](/notes/网络/Socket.md)
 
 ***
 ### 设计模式
