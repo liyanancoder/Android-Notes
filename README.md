@@ -1,10 +1,10 @@
 
 
-### Java基础
+## Java基础
 
-* [java基础note](https://github.com/liyanancoder/Android-Notes/tree/master/notes/java基础)
+* [java基础note](notes/java基础)
 
-### Java并发
+## Java并发
 
 * [java并发note](https://github.com/liyanancoder/Android-Notes/tree/master/notes/java并发)
 
