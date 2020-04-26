@@ -45,7 +45,7 @@
 
 ## 算法
 
-* [算法]/notes/%E7%AE%97%E6%B3%95)
+* [算法](/notes/算法)
 * [LeetCode 题解](https://github.com/liyanancoder/LeetcodePractice)
 
 ## Android
