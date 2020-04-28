@@ -207,7 +207,7 @@ public class MainActivity extends Activity {
 
 有一个静态的 Drawable 对象当 ImageView 设置这个 Drawable 时，ImageView 保存了 mDrawable 的引用，而 ImageView 传入的 this 是 MainActivity 的 mContext，因为被 static 修饰的 mDrawable 是常驻内存的，MainActivity 是它的间接引用，MainActivity 被销毁时，也不能被 GC 掉，所以造成内存泄漏。  
 
-**（2）正确使用 Context**
+**（2）正确使用 Context**  
 一般 Context 造成的内存泄漏，几乎都是当 Context 销毁的时候，却因为被引用导致销毁失败，而 Application 的 Context 对象可以理解为随着进程存在的，所以我们总结出使用 Context 的正确用法：  
 - 当 Application 的 Context 能满足的情况下，并且生命周期长的对象，优先使用 Application 的 Context。
 - 不要让生命周期长于 Activity 的对象持有到 Activity 的引用。
