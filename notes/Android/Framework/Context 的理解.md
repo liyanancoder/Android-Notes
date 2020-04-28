@@ -55,7 +55,7 @@ public void callApplicationOnCreate(Application app) {
         return newApplication(cl.loadClass(className), context);
     }
     
-    static public Application newApplication(Class<?> clazz, Context context)
+static public Application newApplication(Class<?> clazz, Context context)
             throws InstantiationException, IllegalAccessException, 
             ClassNotFoundException {
         Application app = (Application)clazz.newInstance();
@@ -107,9 +107,9 @@ ContextWrapper 里包含一个 Context，调用都委托给他了。
 Activity 启动调用的就是 performLaunchActivity() 函数，首先就是 newActivity 创建 Activity 对象，也是通过 ClassLoader 加载类然后调用 newInstance() 创建 activity 对象。接着是调用 makeApplication() 函数返回 application 对象，然后调用 createBaseContextForActivity() 函数创建 Context，并将 context 赋予 activity，最后调用 onCreate() 生命周期。
 ```
 private Activity performLaunchActivity(ActivityClientRecord r, Intent customIntent) {
-	...
-	Activity activity = null;
-	activity = mInstrumentation.newActivity(
+    ...
+    Activity activity = null;
+    activity = mInstrumentation.newActivity(
                     cl, component.getClassName(), r.intent);
 
     Application app = r.packageInfo.makeApplication(false, mInstrumentation);
@@ -142,11 +142,11 @@ public abstract class Service extends ContextWrapper{...}
 ```
 ```
 private void handleCreateService(CreateServiceData data) {
-	...
-	Service service = null;
-	service = (Service) cl.loadClass(data.info.name).newInstance();
+    ...
+    Service service = null;
+    service = (Service) cl.loadClass(data.info.name).newInstance();
 
-	ContextImpl context = ContextImpl.createAppContext(this, packageInfo);
+    ContextImpl context = ContextImpl.createAppContext(this, packageInfo);
     context.setOuterContext(service);
 
     Application app = packageInfo.makeApplication(false, mInstrumentation);
@@ -159,4 +159,58 @@ private void handleCreateService(CreateServiceData data) {
 
 其中 createAppContext() 函数中 new ContextImpl() 创建了 ContextImpl 对象。  
 attach() 函数调用的是 attachBaseContext(context) 函数。
+
+### 5. Context 会引起的相关问题
+**（1）Context 引起的内存泄漏**  
+Context 用的不好有可能会引起内存泄漏的问题。  
+
+示例1:     
+**错误的单例模式：**    
+```
+public class Singleton { 
+    private static Singleton instance; 
+    private Context mContext;
+
+    private Singleton(Context context) {
+    	this.mContext = context;
+    }
+
+    public static Singleton getInstance(Context context) {
+    	if (instance == null) {
+           instance = new Singleton(context);
+    }
+
+    return instance;
+    }
+}
+```
+
+这是一个非线程安全的单例模式，instance 作为静态对象，其生命周期要长于普通的对象，其中也包含 Activity A 去 getInstance 获得 instance 对象，传入 this，常驻内存的 Singleton 保存了传入的 Activity A 对象，并一直持有，即使 Activity 被销毁掉，但因为它的引用还存在于一个 Singleton 中，就不可能被 GC 掉，这样就导致了内存泄漏。  
+
+示例2:   
+**View 持有 Activity 引用**    
+```
+public class MainActivity extends Activity { 
+    private static Drawable mDrawable;
+
+    @Override
+    protected void onCreate(Bundle saveInstanceState) {
+        super.onCreate(saveInstanceState);
+    	setContentView(R.layout.activity_main);
+    	ImageView iv = new ImageView(this);
+    	mDrawable = getResources().getDrawable(R.drawable.ic_launcher);
+    	iv.setImageDrawable(mDrawable);
+    }
+
+}
+```
+
+有一个静态的 Drawable 对象当 ImageView 设置这个 Drawable 时，ImageView 保存了 mDrawable 的引用，而 ImageView 传入的 this 是 MainActivity 的 mContext，因为被 static 修饰的 mDrawable 是常驻内存的，MainActivity 是它的间接引用，MainActivity 被销毁时，也不能被 GC 掉，所以造成内存泄漏。  
+
+**（2）正确使用 Context**
+一般 Context 造成的内存泄漏，几乎都是当 Context 销毁的时候，却因为被引用导致销毁失败，而 Application 的 Context 对象可以理解为随着进程存在的，所以我们总结出使用 Context 的正确用法：  
+- 当 Application 的 Context 能满足的情况下，并且生命周期长的对象，优先使用 Application 的 Context。
+- 不要让生命周期长于 Activity 的对象持有到 Activity 的引用。
+- 尽量不要在 Activity 中使用非晶态内部类，因为非静态内部类会隐式持有外部类实例的引用，如果使用静态内部类，将外部实例引用作为弱引用持有。
+
 
