@@ -160,6 +160,20 @@ private void handleCreateService(CreateServiceData data) {
 其中 createAppContext() 函数中 new ContextImpl() 创建了 ContextImpl 对象。  
 attach() 函数调用的是 attachBaseContext(context) 函数。
 
+### 4. 与 Context 相关的问题
+（1）应用里面有多少个 Context？ 不同的 Context 之间有什么区别？  
+Context 的数量 = activity 数量 + service 数量 + application 数量    
+因为 Activity 要显示 UI，继承的是 ContextThemeWrapper，而 Service 和 Application 继承自 ContextWrapper。  
+
+（2）Activity 里的 “this” 和 getBaseContext 有什么区别？  
+Activity 最终继承的是 Context，所以 this 是 Activity 自己。而 getBaseContext 返回的是 ContextWrapper 里面的 mBase。  
+
+（3）getApplication 和 getApplicationContext 有什么区别？  
+返回的都是 application 对象，但是 getApplication 是 Activity 和 Service 特有的。  
+
+（4）应用组件的构造、onCreate()、attachBaseContext() 调用顺序？  
+应用组件的构造函数 -> attachBaseContext() -> onCreate()  
+
 ### 5. Context 会引起的相关问题
 **（1）Context 引起的内存泄漏**  
 Context 用的不好有可能会引起内存泄漏的问题。  
