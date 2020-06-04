@@ -174,8 +174,8 @@ Widget状态改变时候调用，可能会调用多次
 - dispose  
 当 StaefulWidget 从树中移除时调用 dispose() 方法  
 
-###5.2 StatelessWidget
-StatelessWidget 是没有 State（状态）的 Widget，当 Widget 在运行时不需要改变时，就用 StatelessWidget。
+2. StatelessWidget. 
+StatelessWidget 是没有 State（状态）的 Widget，当 Widget 在运行时不需要改变时，就用 StatelessWidget。  
 
 **代码举例：**
 ```
@@ -205,7 +205,7 @@ class MyApp extends StatelessWidget {
   }
 }
 ```
-上面代码中的 MyApp 是 StatelessWidget，其实看一下 Text 的源码，发现它也是 StatelessWidget。![](https://upload-images.jianshu.io/upload_images/2353568-2eae0ff49ef437f0.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/620)
+上面代码中的 MyApp 是 StatelessWidget，其实看一下 Text 的源码，发现它也是 StatelessWidget。![](https://upload-images.jianshu.io/upload_images/2353568-2eae0ff49ef437f0.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/620)  
 要实现自定义的 StatelessWidget，需要下面两步：
 1. 首先继承 StatelessWidget
 2. 必须要实现 build 函数，返回一个 Widget。
