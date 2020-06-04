@@ -1,0 +1,8 @@
+一、安装Flutter 插件的时候可能会遇到的问题：
+1. 执行flutter packages get 命令遇到：
+Waiting for another flutter command to release the startup lock...
+解决方法：进入到你的flutter sdk目录中，然后找到bin/cache/lockfile文件，删除它，然后重启Studio，即可解决。
+
+     ...
+
+后续会继续补充。
