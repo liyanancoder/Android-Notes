@@ -1,8 +1,8 @@
-###一. 前言
+### 一. 前言
 
 Flutter使用的是Dart语言，我们先来了解Dart的一些基础特性，便于后面Flutter的开发。
 
-###二. 变量声明
+### 二. 变量声明
 举例：
 ```
  var name = '小明';
@@ -68,7 +68,7 @@ a = "test";
 ```
 >注意：一般都用Object代替dynamic，而不使用dynamic。
 
-#修饰常量用的：**final** 和 **const**
+### 三. 修饰常量用的：**final** 和 **const**
 在用 **final** 和 **const** 修饰不想改变的值时，需要注意一下几点：
 - 使用 **final** 和 **const** 的时候可以把 **var** 省略
 - **final** 和 **const** 变量只能赋值一次，而且只能在声明的时候就赋值
@@ -77,7 +77,7 @@ a = "test";
 **const** 是编译时常量，在编译时就初始化，值就确定了。
 **final** 是当类创建的时候才初始化。
 
-#List、Set 和 Map
+### 四. List、Set 和 Map
 **List**
 ```
 //使用构造函数创建对象
@@ -129,7 +129,7 @@ int i = map['a'];
         "c":"ccc"
       };
 ```
-#操作符
+### 五. 操作符
 主要分为一下几类：
 1. 算术运算符
 2. 比较操作符
@@ -187,9 +187,9 @@ int i = map['a'];
 - []：访问列表
 - .：访问成员变量
 - ?. ：有条件的成员变量访问
-#语句
+### 六. 语句
 在Java中常用的 **if else**，**switch**，**while** 和 **do while** 在 Dart 里面都支持。
-#函数
+### 七. 函数
 在 Dart 中函数也是对象，函数的类型是 **Function**。
 模版格式：
 ```
@@ -231,7 +231,7 @@ bool(String name,{@required int age,int id}){
 ```
 bool('小明',"123456");//不对，他是有顺序的
 ```
-#lambda表达式
+### 八. lambda表达式
 > => 语句后面只能跟一行代码，而且这一行代码只能是一个表达式，而不能跟语句。表达式可以是函数、值。
 ```
 void main() => runApp(MyApp());
@@ -242,7 +242,7 @@ void main(){
     return runApp(MyApp());//runApp() 返回的是 void
 }
 ```
-#异常
+### 九. 异常
 抛出异常：
 ```
 throw Exception('put your error message here');
@@ -265,7 +265,7 @@ try { 
 }
 ```
 跟 Java 不同的是，Dart 可以抛出任意类型的对象。
-#类
+### 十. 类
 Dart 中每个对象都是一个类的实例，所有类都继承自 Object。
 ```
 class Test{
@@ -286,5 +286,5 @@ Test(this.x,this.y);
 ```
 Test test = Test(1, 2);
 ```
-#总结
+### 总结
 Dart 的简单学习到此就结束了，我们主要学习了变量声明、**final** 和 **const**、**List** **Set**和**Map**、操作符、语句、函数、lambda 表达式和异常。如果想要了解更多的 Dart 语法，可以去看官方文档（https://dart.dev/guides/language/language-tour）。
