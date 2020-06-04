@@ -3,9 +3,9 @@
 
 ### 二. 创建Flutter项目
 在Android Studio中，选择“**start a new Flutter project**”或者选择**File > New Flutter Project**，会出现下图的面板，  
-![屏幕快照 2019-05-22 下午7.06.31.png](https://upload-images.jianshu.io/upload_images/2353568-441608bcaab9e2e5.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)  
+![屏幕快照 2019-05-22 下午7.06.31.png](https://upload-images.jianshu.io/upload_images/2353568-441608bcaab9e2e5.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/620)  
 选择Flutter Application，然后 **Next** ，出现下图的面板，  
-![屏幕快照 2019-05-22 下午7.09.30.png](https://upload-images.jianshu.io/upload_images/2353568-aafcf6751ac1a2d6.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)  
+![屏幕快照 2019-05-22 下午7.09.30.png](https://upload-images.jianshu.io/upload_images/2353568-aafcf6751ac1a2d6.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/620)  
 这里填写应用的信息。  
 - Project name：工程的名字。这里我们就填写first_flutter_app，需要注意的是Project name必须符合 Dart 包名命名规则（小写+下划线，可以有数字）。
 - Flutter SDK path：Flutter sdk 的路径。
@@ -13,7 +13,7 @@
 - Description：工程的描述。
 
 填完之后，点击 **Next**，会出现下图的面板，  
-![屏幕快照 2019-05-22 下午7.18.33.png](https://upload-images.jianshu.io/upload_images/2353568-242d76297d70dd01.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)  
+![屏幕快照 2019-05-22 下午7.18.33.png](https://upload-images.jianshu.io/upload_images/2353568-242d76297d70dd01.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/620)  
 
 这里是设置我们项目的包名，下面有两个选项：  
 - Include Kotlin support for Android code（使用Kotlin开发）
