@@ -66,8 +66,10 @@ Widget 几乎实现了所有的功能，除了 UI、布局之外，还有交互�
 ### 六. Widget的分类
 因为渲染是很耗性能的，为了提高 Flutter 的帧率，就要尽量减少不必要的 UI 渲染，所以 Flutter 根据 UI 是否有变化，将 Widget 分为：  
 - StatefulWidget：是 UI 可以变化的 Widget，创建完后 UI 还可以再更改。  
-- StatelessWidget：是 UI 不可以变化的 Widget，创建完后 UI 就不可以再更改。  
-1. StatefulWidget
+- StatelessWidget：是 UI 不可以变化的 Widget，创建完后 UI 就不可以再更改。 
+   
+### StatefulWidget  
+   
 StatefulWidget 是 UI 可以变化的Widget。  
    
 **代码举例：**
@@ -174,7 +176,8 @@ Widget状态改变时候调用，可能会调用多次
 - dispose  
 当 StaefulWidget 从树中移除时调用 dispose() 方法  
 
-2. StatelessWidget. 
+#### StatelessWidget  
+   
 StatelessWidget 是没有 State（状态）的 Widget，当 Widget 在运行时不需要改变时，就用 StatelessWidget。  
 
 **代码举例：**
